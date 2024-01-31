@@ -18,6 +18,10 @@ return new class extends Migration
             $table->text('content');
             $table->string('image');
             $table->enum('posted',['yes', 'not']);
+            $table->foreignId('category_id')
+            ->constrained()# Se establece una restricción de clave foránea
+            ->onDelete('cascade');# Se especifica la acción 'onDelete' para la cascada de eliminación
+            $table->text("description");
             $table->timestamps();
         });
     }
